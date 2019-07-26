@@ -36,6 +36,7 @@ def download_image(img_data):
 
 
 def extract_text():
+    pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
     img_path = os.path.join(settings.STATIC_ROOT, 'job_post_page.jpg')
     content = pytesseract.image_to_string(Image.open(img_path))
 
