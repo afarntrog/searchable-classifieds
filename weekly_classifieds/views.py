@@ -93,11 +93,14 @@ def admin_index(request):
 def index(request):
     #del_last_week_posts()
     all_posts = JobPosts.objects.all()
-    # Pagination
-    paginator = Paginator(all_posts, 12)
-    page = request.GET.get('page', 1)
-    all_posts = paginator.page(page)
 
+    try:
+        # Pagination
+        paginator = Paginator(all_posts, 12)
+        page = request.GET.get('page', 1)
+        all_posts = paginator.page(page)
+    except:
+            pass
     context = {
         'all_posts': all_posts,
         'date': Date.objects.all()[0],
