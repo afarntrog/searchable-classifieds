@@ -119,12 +119,14 @@ def search_results(request):
 
     if query:
         all_posts = JobPosts.objects.filter(job_post__icontains=query)
-
-    # Pagination
-    paginator = Paginator(all_posts, 12)
-    page = request.GET.get('page', 1)
-    all_posts = paginator.page(page)
-
+    try:
+        # Pagination
+        paginator = Paginator(all_posts, 12)
+        page = request.GET.get('page', 1)
+        all_posts = paginator.page(page)
+    except:
+            pass
+            
     context = {
         'all_posts': all_posts,
         'query': query, # Needed for pagiantion, avoid 'local variable 'all_posts' referenced before assignment'
