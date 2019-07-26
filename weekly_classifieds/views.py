@@ -30,13 +30,13 @@ def get_image(page_num):
 
 
 def download_image(img_data):
-    img_path = os.path.join(settings.MEDIA_ROOT, 'job_post_page.jpg') # https://stackoverflow.com/a/13067314
+    img_path = os.path.join(settings.STATIC_ROOT, 'job_post_page.jpg') # https://stackoverflow.com/a/13067314
     with open(img_path, 'wb') as handler:
         handler.write(img_data)
 
 
 def extract_text():
-    img_path = os.path.join(settings.MEDIA_ROOT, 'job_post_page.jpg')
+    img_path = os.path.join(settings.STATIC_ROOT, 'job_post_page.jpg')
     content = pytesseract.image_to_string(Image.open(img_path))
 
     # Clean text and return list of job posts
