@@ -29,11 +29,10 @@
               success: function(response) { // on success..
                   // On success call the other function
                   // $('#DIV_CONTAINING_FORM').html(response); // update the DIV 
-                  $('#wordcloud_image').attr('src', response);
-                  $('#wordcloud_download_image').attr('href', response);
+                  alert(response.good);
               },
               error: function(response) {
-                $('#msgs').html("<div class='alert alert-danger text-center container'><strong>ERROR: </strong> "+response.responseJSON.error+"</div>");
+                alert(response.good + 'bad');
               },
           });
           return false;
@@ -41,31 +40,6 @@
   });
 </script>
 
-
-          <!--// display overlay while the request is being processed
-          /*$(document).ajaxStart(function() {
-          $("#loading").show();
-            }).ajaxStop(function() {
-                $("#loading").hide();
-              });*/
-
-        $('#form_data').submit(function() {
-              $.ajax({
-                data: $(this).serialize(),
-                type: $(this).attr('method'),
-                url: $(this).attr('action'),
-                success: function(response) {
-                  alert("Successful");
-                },
-                error: function(response) {
-                  alert("Failed");
-                },
-
-              }); // End ajax
-
-        }); // end submit
-
-      }); // end ready-->
 </head>
 <body>
     <!--NAVBAR-->
