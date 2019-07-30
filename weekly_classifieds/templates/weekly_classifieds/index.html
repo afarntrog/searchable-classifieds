@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>BP Classifieds</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -31,7 +31,7 @@
     <div class="row">
 {% for post in all_posts %}
         <div class="col-sm-4 py-2">
-            <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card bg-light mb-3 shadow-lg rounded" style="max-width: 18rem;">
                 <div class="card-body">
                     <p class="card-text">{{ post.job_post }}</p>
                 </div>
@@ -77,9 +77,11 @@
 
 
 
+    {% if user.is_authenticated %}
+    <div>
+        <a href="{% url 'admin_index'%}">page2</a>
+    </div>
+    {% endif %}
 
-<div>
-    <a href="{% url 'admin_index'%}">page2</a>
-</div>
 </body>
 </html>
