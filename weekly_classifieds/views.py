@@ -77,15 +77,12 @@ def handle_img(request):
     job_ad_range = get_page_range(request.POST.get('range'))
     for num in job_ad_range:
         print(num)
-        try:
-            img_data = get_image(str(num))
-            download_image(img_data)
-            job_posts = extract_text()
-            store_job_posts(job_posts)
-        except:
-                pass
+        img_data = get_image(str(num))
+        download_image(img_data)
+        job_posts = extract_text()
+        store_job_posts(job_posts)
     response = JsonResponse({"good": "Please enter a valid YouTube URL"})
-    return HttpResponse(response)#JsonResponse({"message": "You successfully uploaded an awesome-list. The world thanks you!", "color": "success"})
+    return response#JsonResponse({"message": "You successfully uploaded an awesome-list. The world thanks you!", "color": "success"})
     #return HttpResponseRedirect(reverse('index'))
 
 
