@@ -6,6 +6,7 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.contrib.admin.views.decorators import staff_member_required # decorator for admin only access view
 from django.views.decorators.http import require_POST
+from django.http import JsonResponse # for ajax resonse
 
 from django.core.paginator import Paginator # This is for pagination
 
@@ -79,7 +80,8 @@ def handle_img(request):
         download_image(img_data)
         job_posts = extract_text()
         store_job_posts(job_posts)
-    return JsonResponse({"message": "You successfully uploaded an awesome-list. The world thanks you!", "color": "success"})
+        response = JsonResponse({"good": "Please enter a valid YouTube URL"})
+    return response#JsonResponse({"message": "You successfully uploaded an awesome-list. The world thanks you!", "color": "success"})
     #return HttpResponseRedirect(reverse('index'))
 
 

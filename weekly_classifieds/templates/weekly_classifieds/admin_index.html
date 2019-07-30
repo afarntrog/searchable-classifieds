@@ -21,15 +21,14 @@
             });
 
         $('#form_data').submit(function(event) {
-
                 $.ajax({
                   data: $(this).serialize(),
                   type: $(this).attr('method'),
                   url: $(this).attr('action'),
-                  success: function(){
+                  success: function(response){
                     alert("Successful");
                   },
-                  error: function() {
+                  error: function(response) {
                     alert("Failed");
                   },
 
