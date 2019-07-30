@@ -13,12 +13,36 @@
     crossorigin="anonymous"></script>
 
 
+        <script language="JavaScript">
+  $(document).ready(function() {
+      // display overlay while the request is being processed
+      $(document).ajaxStart(function() {
+          $("#loading").show();
+              }).ajaxStop(function() {
+                $("#loading").hide();
+              });
+      $('#form_data').submit(function() { // catch the form's submit event
+          $.ajax({ // create an AJAX call...
+              data: $(this).serialize(), // get the form data
+              type: $(this).attr('method'), // GET or POST
+              url: $(this).attr('action'), // the file to call
+              success: function(response) { // on success..
+                  // On success call the other function
+                  // $('#DIV_CONTAINING_FORM').html(response); // update the DIV 
+                  $('#wordcloud_image').attr('src', response);
+                  $('#wordcloud_download_image').attr('href', response);
+              },
+              error: function(response) {
+                $('#msgs').html("<div class='alert alert-danger text-center container'><strong>ERROR: </strong> "+response.responseJSON.error+"</div>");
+              },
+          });
+          return false;
+      });
+  });
+</script>
 
-    <script>
-      $(document).ready(function() {
 
-
-          // display overlay while the request is being processed
+          <!--// display overlay while the request is being processed
           /*$(document).ajaxStart(function() {
           $("#loading").show();
             }).ajaxStop(function() {
@@ -41,9 +65,7 @@
 
         }); // end submit
 
-      }); // end ready
-    
-    </script>
+      }); // end ready-->
 </head>
 <body>
     <!--NAVBAR-->
