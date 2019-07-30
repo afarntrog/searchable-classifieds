@@ -13,15 +13,15 @@
 
     <script>
       $(document).ready(function() {
+        // display overlay while the request is being processed
+        $(document).ajaxStart(function() {
+        $("#loading").show();
+          }).ajaxStop(function() {
+              $("#loading").hide();
+            });
 
         $('#form_data').submit(function(event) {
-
-          // display overlay while the request is being processed
-          $(document).ajaxStart(function() {
-                  $("#loading").show();
-                    }).ajaxStop(function() {
-                        $("#loading").hide();
-                      });
+          event.preventDefault();
 
                 $.ajax({
                   data: $(this).serialize(),
@@ -35,7 +35,6 @@
                   },
 
                 }); // End ajax
-                event.preventDefault();
 
         }); // end submit
 
