@@ -130,6 +130,7 @@ def search_results(request):
     context = {
         'all_posts': all_posts,
         'query': query, # Needed for pagiantion, avoid 'local variable 'all_posts' referenced before assignment'
+        'date': Date.objects.all()[0],
     }
 
     return render(request, 'weekly_classifieds/index.html', context)
