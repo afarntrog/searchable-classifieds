@@ -69,12 +69,14 @@ def store_date_of_url(form_input):
 
 
 # Get the range of the classified ads
-@staff_member_required
+#@staff_member_required
 def handle_img(request):
     del_last_week_posts() # Since we are storing current weeks job posts we don't need/want last weeks
+    form_data = request.POST.get('range')
 
-    store_date_of_url(request.POST.get('range')) 
-    job_ad_range = get_page_range(request.POST.get('range'))
+    store_date_of_url(form_data) 
+    job_ad_range = get_page_range(form_data)
+
     for num in job_ad_range:
         print(num)
         img_data = get_image(str(num))
@@ -82,7 +84,7 @@ def handle_img(request):
         job_posts = extract_text()
         store_job_posts(job_posts)
     response = JsonResponse({"good": "Please enter a valid YouTube URL"})
-    return response#JsonResponse({"message": "You successfully uploaded an awesome-list. The world thanks you!", "color": "success"})
+    return HttpResponse(response)#JsonResponse({"message": "You successfully uploaded an awesome-list. The world thanks you!", "color": "success"})
     #return HttpResponseRedirect(reverse('index'))
 
 
