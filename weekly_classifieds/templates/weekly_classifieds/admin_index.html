@@ -13,26 +13,28 @@
 
     <script>
       $(document).ready(function() {
-        // display overlay while the request is being processed
-        $(document).ajaxStart(function() {
-        $("#loading").show();
-          }).ajaxStop(function() {
-              $("#loading").hide();
-            });
 
-        $('#form_data').submit(function(event) {
-                $.ajax({
-                  data: $(this).serialize(),
-                  type: $(this).attr('method'),
-                  url: $(this).attr('action'),
-                  success: function(response){
-                    alert("Successful");
-                  },
-                  error: function(response) {
-                    alert("Failed");
-                  },
 
-                }); // End ajax
+          // display overlay while the request is being processed
+          /*$(document).ajaxStart(function() {
+          $("#loading").show();
+            }).ajaxStop(function() {
+                $("#loading").hide();
+              });*/
+
+        $('#form_data').submit(function() {
+              $.ajax({
+                data: $(this).serialize(),
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                success: function(response) {
+                  alert("Successful");
+                },
+                error: function(response) {
+                  alert("Failed");
+                },
+
+              }); // End ajax
 
         }); // end submit
 
