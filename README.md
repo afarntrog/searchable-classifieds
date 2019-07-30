@@ -1,11 +1,11 @@
 ## Problem: 
 My local newspaper has local job classifieds. However, they are online only as a [flipbook](https://www.3dissue.com/flipbooks.html).
-Since flipbooks are in pdf format they are not searchable. And it is too tedious to look through each one to find something in my interests.
+Since flipbooks are in JPEG format they are not searchable. And it is too tedious to look through each one to find something in my interests.
 
 
 ## Solution: 
 
-I created this Python Django app to scrape the classifieds pdf and then using tesseract OCR extracted the text. Then I displayed them in a nice format and added search to the app. So now you can easily find jobs with your desired keywords.
+I created this Python Django app to scrape the classifieds JPEG and then using tesseract OCR extracted the text. Then I displayed them in a nice format and added search to the app. So now you can easily find jobs with your desired keywords.
 
 
 ---
