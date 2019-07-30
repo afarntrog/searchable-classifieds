@@ -72,7 +72,7 @@ def store_date_of_url(form_input):
 #@staff_member_required
 def handle_img(request):
     del_last_week_posts() # Since we are storing current weeks job posts we don't need/want last weeks
-    form_data = request.GET.get('range')
+    form_data = request.POST.get('range')
 
     store_date_of_url(form_data) 
     job_ad_range = get_page_range(form_data)

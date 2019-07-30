@@ -50,7 +50,7 @@
         </button>
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <form class="form-inline my-2 my-lg-0 mx-auto" action="{% url 'handle_img' %}" id="form_data" method="GET">{% csrf_token %}
+          <form class="form-inline my-2 my-lg-0 mx-auto" action="{% url 'handle_img' %}" id="form_data" method="POST">{% csrf_token %}
             <input class="form-control mr-sm-2" type="search" name='range' placeholder="Search" required>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
           </form>

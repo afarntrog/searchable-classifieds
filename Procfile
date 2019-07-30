@@ -1,1 +1,1 @@
-web: gunicorn classifieds.wsgi
+web: gunicorn classifieds.wsgi --timeout 300
