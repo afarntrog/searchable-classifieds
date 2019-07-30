@@ -1,1 +1,2 @@
-/staticfiles export-ignore
+* linguist-vendored
+*.py linguist-vendored=false
