@@ -79,7 +79,8 @@ def handle_img(request):
         download_image(img_data)
         job_posts = extract_text()
         store_job_posts(job_posts)
-    return HttpResponseRedirect(reverse('index'))
+    return JsonResponse({"message": "You successfully uploaded an awesome-list. The world thanks you!", "color": "success"})
+    #return HttpResponseRedirect(reverse('index'))
 
 
 
