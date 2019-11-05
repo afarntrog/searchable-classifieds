@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BP Classifieds</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+
+        <script language="JavaScript">
+  $(document).ready(function() {
+      // display overlay while the request is being processed
+      $(document).ajaxStart(function() {
+          $("#loading").show();
+              }).ajaxStop(function() {
+                $("#loading").hide();
+              });
+      $('#form_data').submit(function() { // catch the form's submit event
+          $.ajax({ // create an AJAX call...
+              data: $(this).serialize(), // get the form data
+              type: $(this).attr('method'), // GET or POST
+              url: $(this).attr('action'), // the file to call
+              success: function(response) { // on success..
+                  // On success call the other function
+                  // $('#DIV_CONTAINING_FORM').html(response); // update the DIV 
+                  alert(response.good);
+              },
+              error: function(response) {
+                alert(response.good + 'bad');
+              },
+          });
+          return false;
+      });
+  });
+</script>
+
+</head>
+<body>
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <form class="form-inline my-2 my-lg-0 mx-auto" action="{% url 'handle_img' %}" id="form_data" method="POST">{% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" name='range' placeholder="Search" required>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+          </form>
+        </div>
+      </nav>
+
+
+    <!-- Loading modal after user submits link -->
+    <div class="modal" id="loading" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-center">Scraping, extracting and displaying...</h5>
+        </div>
+        <div class="modal-body text-center">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
